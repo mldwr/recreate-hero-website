@@ -20,11 +20,19 @@ export default {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "#8AB833",
           dark: "#729C2A",
         },
         secondary: "#1A1A1A",
+      },
+      borderColor: {
+        border: "hsl(var(--border))",
       },
       keyframes: {
         "fade-in": {
