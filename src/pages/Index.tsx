@@ -8,6 +8,7 @@ import PricingSection from "../components/PricingSection";
 import BuildingTypeSection from "../components/BuildingTypeSection";
 import StatsSection from "../components/StatsSection";
 import FAQSection from "../components/FAQSection";
+import Footer from "../components/Footer";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <BuildingTypeSection />
       <StatsSection />
       <FAQSection />
+      <Footer />
     </div>
   );
 };
