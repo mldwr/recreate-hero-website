@@ -12,7 +12,6 @@ const Navbar = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-2">
               <span className="text-xl font-semibold">ENERGIE AUSWEIS</span>
-              <span className="text-primary text-xl font-bold">48</span>
             </a>
           </div>
 

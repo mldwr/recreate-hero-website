@@ -9,9 +9,9 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-lg text-gray-600">
+                {/* <p className="text-lg text-gray-600">
                   In <span className="text-primary font-bold text-2xl">48</span> Stunden
-                </p>
+                </p> */}
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
                   Energieausweis online bestellen:
                   <br />
@@ -53,7 +53,7 @@ const Hero = () => {
                 </div>
                 <span className="text-2xl font-bold text-gray-900">4.2</span>
                 <img
-                  src="/public/lovable-uploads/3ba65f79-9670-44fc-a40d-e7225b5fef04.png"
+                  src="/public/energieausweis-hero.jpg"
                   alt="Google"
                   className="h-6 object-contain"
                 />
@@ -64,7 +64,7 @@ const Hero = () => {
           <div className="relative animate-fade-in">
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/public/lovable-uploads/3ba65f79-9670-44fc-a40d-e7225b5fef04.png"
+                src="/public/energieausweis-hero.jpg"
                 alt="Energy certificate service"
                 className="w-full h-full object-cover"
               />
