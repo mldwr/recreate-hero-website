@@ -6,6 +6,7 @@ import VideoSection from "../components/VideoSection";
 import PricingSection from "../components/PricingSection";
 import BuildingTypeSection from "../components/BuildingTypeSection";
 import StatsSection from "../components/StatsSection";
+import ComparisonSection from "../components/ComparisonSection";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Hero />
       <ProcessSection />
       <VideoSection />
+      <ComparisonSection />
       <PricingSection />
       <BuildingTypeSection />
       <StatsSection />
