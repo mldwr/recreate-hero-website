@@ -4,7 +4,7 @@ const ProcessSection = () => {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-          Drei Vorteile von Energieausweis48
+          Drei Vorteile von Energieausweis
         </h2>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -44,7 +44,7 @@ const ProcessSection = () => {
               Professionelle Beratung und Unterstützung
             </h3>
             <p className="text-gray-600 text-center">
-              Unser engagiertes Serviceteam von Energieausweis48 unterstützt Sie kompetent bei allen Anliegen rund um den Energieausweis und sorgt dafür, dass dieser den gesetzlichen Anforderungen entspricht.
+              Unser engagiertes Serviceteam von Energieausweis unterstützt Sie kompetent bei allen Anliegen rund um den Energieausweis und sorgt dafür, dass dieser den gesetzlichen Anforderungen entspricht.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ const ProcessSection = () => {
               Schnelle und einfache Erstellung von Energie-ausweisen
             </h3>
             <p className="text-gray-600 text-center">
-              Erstellen Sie Ihren Energieausweis bei Energieausweis48 schnell und unkompliziert! Nach Prüfung durch einen zertifizierten Energieberater erhalten Sie den amtlichen Ausweis innerhalb von nur 48 Stunden.
+              Erstellen Sie Ihren Energieausweis bei Energieausweis schnell und unkompliziert! Nach Prüfung durch einen zertifizierten Energieberater erhalten Sie den amtlichen Ausweis.
             </p>
           </div>
         </div>

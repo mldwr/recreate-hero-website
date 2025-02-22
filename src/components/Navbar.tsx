@@ -35,12 +35,6 @@ const Navbar = () => {
             <a href="/uber-uns" className="text-gray-800 hover:text-primary transition-colors">
               Über uns
             </a>
-            <div className="relative group">
-              <button className="flex items-center space-x-1 text-gray-800 hover:text-primary transition-colors">
-                <span>Events & News</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            </div>
             <button className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
               Jetzt bestellen
             </button>
@@ -76,9 +70,6 @@ const Navbar = () => {
             </a>
             <a href="#" className="block px-3 py-2 text-gray-800 hover:text-primary">
               Über uns
-            </a>
-            <a href="#" className="block px-3 py-2 text-gray-800 hover:text-primary">
-              Events & News
             </a>
             <button className="w-full mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark">
               Jetzt bestellen

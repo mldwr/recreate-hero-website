@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100">
+    <div className="relative min-h-screen pt-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in">
@@ -37,32 +37,10 @@ const Hero = () => {
                 Jetzt bestellen
               </button>
             </div>
-
-            <div className="space-y-2">
-              <p className="text-sm text-gray-600">Bewertungen ab 2018</p>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-5 h-5 ${
-                        i < 4 ? "text-yellow-400 fill-yellow-400" : "text-yellow-400 fill-yellow-400 opacity-50"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="text-2xl font-bold text-gray-900">4.2</span>
-                <img
-                  src="/public/energieausweis-hero.jpg"
-                  alt="Google"
-                  className="h-6 object-contain"
-                />
-              </div>
-            </div>
           </div>
 
           <div className="relative animate-fade-in">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src="/public/energieausweis-hero.jpg"
                 alt="Energy certificate service"
@@ -70,7 +48,7 @@ const Hero = () => {
               />
             </div>
 
-            <div className="absolute -bottom-6 right-6 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
+            <div className="absolute -bottom-6 right-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <svg
                   className="w-6 h-6 text-primary"
@@ -92,7 +70,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="absolute -top-6 right-12 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
+            <div className="absolute -top-12 right-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <svg
                   className="w-6 h-6 text-primary"

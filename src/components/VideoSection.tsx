@@ -7,9 +7,9 @@ const VideoSection = () => {
           <div className="relative">
             <div className="relative w-full aspect-square rounded-full bg-[#D6F0B3] flex items-center justify-center">
               <img
-                src="/lovable-uploads/90e00cd5-9ad9-45b5-8264-da61003685cf.png"
+                src="/video-call.jpeg"
                 alt="Video conferencing interface showing an energy consultation"
-                className="w-[90%] h-[90%] object-contain"
+                className="w-[70%] h-[70%] object-contain"
               />
             </div>
           </div>

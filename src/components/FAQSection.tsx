@@ -29,7 +29,7 @@ const FAQSection = () => {
             </AccordionItem>
 
             <AccordionItem value="item-2" className="bg-white rounded-lg">
-              <AccordionTrigger className="px-6 py-4 hover:no-underline text-primary">
+              <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 Wann ist der Gewerbeanteil wohnungsähnlich und wann nicht?
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-4">
@@ -39,7 +39,7 @@ const FAQSection = () => {
 
             <AccordionItem value="item-3" className="bg-white rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                Warum benötigt man beim Verkauf oder bei der Vermietung eines Gebäudes einen Energieausweis?
+                Warum benötigt man beim Verkauf/bei Vermietung eines Gebäudes einen Energieausweis?
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-4">
                 Der Energieausweis ist gesetzlich vorgeschrieben und dient der Transparenz des Energieverbrauchs. Er ermöglicht potenziellen Käufern oder Mietern, die energetische Qualität verschiedener Gebäude zu vergleichen und die zu erwartenden Energiekosten abzuschätzen.
