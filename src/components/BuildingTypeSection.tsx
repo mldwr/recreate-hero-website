@@ -7,6 +7,7 @@ const BuildingTypeSection = () => {
   const [hasBills, setHasBills] = useState<boolean | null>(null);
   const [unitCount, setUnitCount] = useState<"1-4" | ">4" | null>(null);
   const [buildingDate, setBuildingDate] = useState<"before" | "after" | null>(null);
+  const [isRenovated, setIsRenovated] = useState<boolean | null>(null);
 
   const buildingTypes = [
     {
@@ -33,6 +34,8 @@ const BuildingTypeSection = () => {
       setCurrentStep(3);
     } else if (currentStep === 3 && unitCount !== null) {
       setCurrentStep(4);
+    } else if (currentStep === 4 && buildingDate !== null) {
+      setCurrentStep(5);
     }
   };
 
@@ -46,6 +49,9 @@ const BuildingTypeSection = () => {
     } else if (currentStep === 4) {
       setCurrentStep(3);
       setBuildingDate(null);
+    } else if (currentStep === 5) {
+      setCurrentStep(4);
+      setIsRenovated(null);
     }
   };
 
@@ -340,6 +346,72 @@ const BuildingTypeSection = () => {
           </>
         )}
 
+        {currentStep === 5 && (
+          <>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Wurde das Gebäude gemäß der Wärmeschutzverordnung von 1977 saniert?
+              </h3>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+              <button
+                onClick={() => setIsRenovated(true)}
+                className={`relative p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 ${
+                  isRenovated === true
+                    ? "ring-2 ring-primary shadow-md transform scale-105"
+                    : "hover:scale-105"
+                }`}
+              >
+                <div className="flex flex-col items-center space-y-6">
+                  <div className="p-4 rounded-full bg-gray-50">
+                    <Check 
+                      className={`w-12 h-12 ${
+                        isRenovated === true ? "text-primary" : "text-gray-600"
+                      }`}
+                    />
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-900">Ja</h4>
+                </div>
+                {isRenovated === true && (
+                  <div className="absolute -top-2 -right-2">
+                    <div className="bg-primary text-white rounded-full p-2">
+                      <Check className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </button>
+
+              <button
+                onClick={() => setIsRenovated(false)}
+                className={`relative p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 ${
+                  isRenovated === false
+                    ? "ring-2 ring-primary shadow-md transform scale-105"
+                    : "hover:scale-105"
+                }`}
+              >
+                <div className="flex flex-col items-center space-y-6">
+                  <div className="p-4 rounded-full bg-gray-50">
+                    <X
+                      className={`w-12 h-12 ${
+                        isRenovated === false ? "text-primary" : "text-gray-600"
+                      }`}
+                    />
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-900">Nein</h4>
+                </div>
+                {isRenovated === false && (
+                  <div className="absolute -top-2 -right-2">
+                    <div className="bg-primary text-white rounded-full p-2">
+                      <Check className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </button>
+            </div>
+          </>
+        )}
+
         <div className="flex justify-between mt-12 max-w-5xl mx-auto px-4">
           <button
             onClick={handleBack}
@@ -372,7 +444,8 @@ const BuildingTypeSection = () => {
               (currentStep === 1 && selectedType) || 
               (currentStep === 2 && hasBills !== null) ||
               (currentStep === 3 && unitCount !== null) ||
-              (currentStep === 4 && buildingDate !== null)
+              (currentStep === 4 && buildingDate !== null) ||
+              (currentStep === 5 && isRenovated !== null)
                 ? "text-primary hover:text-primary-dark"
                 : "text-gray-400 cursor-not-allowed"
             }`}
@@ -380,7 +453,8 @@ const BuildingTypeSection = () => {
               (currentStep === 1 && !selectedType) || 
               (currentStep === 2 && hasBills === null) ||
               (currentStep === 3 && unitCount === null) ||
-              (currentStep === 4 && buildingDate === null)
+              (currentStep === 4 && buildingDate === null) ||
+              (currentStep === 5 && isRenovated === null)
             }
           >
             Weiter
@@ -406,7 +480,7 @@ const BuildingTypeSection = () => {
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div 
               className="h-full bg-primary transition-all duration-300"
-              style={{ width: `${(currentStep / 4) * 100}%` }}
+              style={{ width: `${(currentStep / 5) * 100}%` }}
             />
           </div>
         </div>
