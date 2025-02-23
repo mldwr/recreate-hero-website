@@ -244,11 +244,11 @@ const BuildingTypeSection = () => {
                         fontSize="10"
                         fontWeight="bold"
                       >
-                        >4
+                        {'>'}4
                       </text>
                     </svg>
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">&gt; 4</h4>
+                  <h4 className="text-lg font-medium text-gray-900">{'>'} 4</h4>
                 </div>
                 {unitCount === ">4" && (
                   <div className="absolute -top-2 -right-2">
