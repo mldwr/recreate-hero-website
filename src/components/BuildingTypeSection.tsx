@@ -24,6 +24,8 @@ const BuildingTypeSection = () => {
       setCurrentStep(4);
     } else if (currentStep === 4 && buildingDate !== null) {
       setCurrentStep(5);
+    } else if (currentStep === 5 && isRenovated !== null) {
+      setCurrentStep(6);
     }
   };
 
@@ -40,6 +42,9 @@ const BuildingTypeSection = () => {
     } else if (currentStep === 5) {
       setCurrentStep(4);
       setIsRenovated(null);
+    } else if (currentStep === 6) {
+      setCurrentStep(5);
+      // Don't reset any values when going back from results
     }
   };
 
@@ -107,13 +112,63 @@ const BuildingTypeSection = () => {
           </StepLayout>
         )}
 
-        <StepNavigation
-          currentStep={currentStep}
-          totalSteps={5}
-          canGoNext={canGoNext}
-          onBack={handleBack}
-          onNext={handleNext}
-        />
+        {currentStep === 6 && (
+          <StepLayout title="Basierend auf Ihren Angaben empfehlen wir:">
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="space-y-8">
+                <div className="p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="flex flex-col items-center space-y-6">
+                    <div className="w-24 h-24 mb-4">
+                      <img
+                        src="/verbrauchausweis.png"
+                        alt="Verbrauchsausweis"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-900">Verbrauchsausweis</h3>
+                    <p className="text-gray-600 text-center">
+                      Basiert auf den tatsächlichen Energieverbräuchen der letzten drei Jahre.
+                    </p>
+                    <button className="w-full mt-4 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                      Verbrauchsausweis bestellen
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="flex flex-col items-center space-y-6">
+                    <div className="w-24 h-24 mb-4">
+                      <img
+                        src="/bedarfsausweis.png"
+                        alt="Bedarfsausweis"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-900">Bedarfsausweis</h3>
+                    <p className="text-gray-600 text-center">
+                      Basiert auf den technischen Eigenschaften und dem Zustand des Gebäudes.
+                    </p>
+                    <button className="w-full mt-4 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                      Bedarfsausweis bestellen
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </StepLayout>
+        )}
+
+        {currentStep < 6 && (
+          <StepNavigation
+            currentStep={currentStep - 1}
+            totalSteps={5}
+            canGoNext={canGoNext}
+            onBack={handleBack}
+            onNext={handleNext}
+          />
+        )}
       </div>
     </section>
   );
