@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Input } from "../ui/input";
 import { InfoIcon } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
+import YesNoStep from "../building-type/YesNoStep";
 
 interface VerbrauchsausweisFormProps {
   currentStep: number;
@@ -23,7 +23,12 @@ const VerbrauchsausweisForm = ({
     wohnflaeche: "",
     gewerbeanteil: "",
     hasUploadedFiles: false,
-    keller: ""
+    keller: "",
+    fensterlüftung: null as boolean | null,
+    schachtlüftung: null as boolean | null,
+    lüftungOhneWärme: null as boolean | null,
+    lüftungMitWärme: null as boolean | null,
+    kühlung: null as boolean | null
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -50,7 +55,15 @@ const VerbrauchsausweisForm = ({
     }
   };
 
-  return <div className="bg-white p-8 rounded-lg shadow-sm">
+  const handleBooleanChange = (field: string, value: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  return (
+    <div className="bg-white p-8 rounded-lg shadow-sm">
       <div className="mb-8">
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
           <p className="text-sm text-gray-700">
@@ -240,6 +253,67 @@ const VerbrauchsausweisForm = ({
               </div>
             </div>
           </div>
+
+          {/* Building Ventilation Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              Gebäudelüftung
+              <InfoIcon className="w-4 h-4 text-gray-400" />
+            </h2>
+            <div className="space-y-8">
+              <div>
+                <label className="block text-sm text-gray-700 mb-4">
+                  Fensterlüftung
+                </label>
+                <YesNoStep 
+                  value={formData.fensterlüftung}
+                  onChange={(value) => handleBooleanChange("fensterlüftung", value)}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-700 mb-4">
+                  Schachtlüftung
+                </label>
+                <YesNoStep 
+                  value={formData.schachtlüftung}
+                  onChange={(value) => handleBooleanChange("schachtlüftung", value)}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-700 mb-4">
+                  Lüftungsanlage ohne Wärmerückgewinnung
+                </label>
+                <YesNoStep 
+                  value={formData.lüftungOhneWärme}
+                  onChange={(value) => handleBooleanChange("lüftungOhneWärme", value)}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-700 mb-4">
+                  Lüftungsanlage mit Wärmerückgewinnung
+                </label>
+                <YesNoStep 
+                  value={formData.lüftungMitWärme}
+                  onChange={(value) => handleBooleanChange("lüftungMitWärme", value)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Cooling Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              Kühlung
+              <InfoIcon className="w-4 h-4 text-gray-400" />
+            </h2>
+            <YesNoStep 
+              value={formData.kühlung}
+              onChange={(value) => handleBooleanChange("kühlung", value)}
+            />
+          </div>
         </div>
       </div>
 
@@ -251,7 +325,8 @@ const VerbrauchsausweisForm = ({
           Weiter
         </button>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default VerbrauchsausweisForm;
