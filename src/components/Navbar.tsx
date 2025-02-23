@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-semibold">ENERGIE AUSWEIS ONLINE</span>
+              <span className="text-xl font-semibold">Energieausweis SZ</span>
             </a>
           </div>
 

@@ -7,9 +7,7 @@ const Footer = () => {
           {/* Logo Column */}
           <div>
             <h2 className="text-2xl font-light">
-              ENERGIE
-              <br />
-              AUSWEIS
+              Energieausweis SZ
             </h2>
           </div>
 
@@ -20,16 +18,6 @@ const Footer = () => {
               <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   Hilfe & Support
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Downloads
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  API
                 </a>
               </li>
               <li>
@@ -75,7 +63,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-12 text-center text-sm">
-          <p>Copyright © 2024 Energieausweis GmbH</p>
+          <p>Copyright © 2024 Energieausweis SZ GmbH</p>
         </div>
       </div>
     </footer>

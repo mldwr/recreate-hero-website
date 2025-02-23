@@ -50,7 +50,11 @@ const PricingSection = () => {
           </div>
 
           {/* Bedarfsausweis Card */}
-          <div className="border rounded-lg overflow-hidden bg-white transition-shadow hover:shadow-lg h-full flex flex-col">
+          <div className="border-2 border-primary rounded-lg overflow-hidden bg-white transition-shadow hover:shadow-lg h-full flex flex-col">
+          
+            <div className="bg-primary text-white text-center py-2">
+              <p className="font-medium">Empfehlung</p>
+            </div>
             <div className="p-6 space-y-4 flex flex-col flex-grow">
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 text-center">Bedarfsausweis</h3>
@@ -86,7 +90,7 @@ const PricingSection = () => {
                   <p className="text-sm text-gray-600">inklusive MwSt.</p>
                 </div>
 
-                <button className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md py-2 mt-4">
+                <button className="w-full bg-primary text-white hover:bg-primary-dark transition-colors rounded-md py-2 mt-4">
                   Jetzt bestellen
                 </button>
               </div>
@@ -94,10 +98,8 @@ const PricingSection = () => {
           </div>
 
           {/* Bedarfsausweis Video Card */}
-          <div className="border-2 border-primary rounded-lg overflow-hidden bg-white transition-shadow hover:shadow-lg h-full flex flex-col">
-            <div className="bg-primary text-white text-center py-2">
-              <p className="font-medium">Empfehlung</p>
-            </div>
+          <div className="border rounded-lg overflow-hidden bg-white transition-shadow hover:shadow-lg h-full flex flex-col">
+            
             <div className="p-6 space-y-4 flex flex-col flex-grow">
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 text-center">Bedarfsausweis</h3>
@@ -133,9 +135,11 @@ const PricingSection = () => {
                   <p className="text-sm text-gray-600">inklusive MwSt.</p>
                 </div>
 
-                <button className="w-full bg-primary text-white hover:bg-primary-dark transition-colors rounded-md py-2 mt-4">
+                
+                <button className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md py-2 mt-4">
                   Jetzt bestellen
                 </button>
+
               </div>
             </div>
           </div>

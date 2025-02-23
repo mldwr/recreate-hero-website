@@ -13,14 +13,14 @@ const Hero = () => {
                   In <span className="text-primary font-bold text-2xl">48</span> Stunden
                 </p> */}
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
-                  Energieausweis Online!
+                  Energieausweis SZ!
                 </h1>
               </div>
 
               <p className="text-lg text-gray-600 leading-relaxed">
                 Sie benötigen einen rechtssicheren Energieausweis als{" "}
-                <span className="text-primary hover:underline cursor-pointer">Bedarfsausweis</span> oder{" "}
-                <span className="text-primary hover:underline cursor-pointer">Verbrauchsausweis</span>?
+                <a href="/bedarfsausweis" className="text-primary hover:text-white hover:bg-primary cursor-pointer border border-primary rounded-full px-2 transition-colors">Bedarfsausweis</a> oder{" "}
+                <a href="/verbrauchsausweis" className="text-primary hover:text-white hover:bg-primary cursor-pointer border border-primary rounded-full px-2 transition-colors">Verbrauchsausweis</a>?
                 Wir erstellen Ihren Energieausweis direkt bei Ihnen vor Ort, 
                 remote als Video-Call oder im Self-Service direkt hier online.
               </p>
