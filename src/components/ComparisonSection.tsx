@@ -1,5 +1,5 @@
-
 import { BrickWall } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ComparisonSection = () => {
   return (
@@ -45,9 +45,12 @@ const ComparisonSection = () => {
               </div>
             </div>
 
-            <button className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md py-3 font-medium">
+            <Link 
+              to="/verbrauchsausweis"
+              className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md py-3 font-medium block text-center"
+            >
               Mehr zum Verbrauchsausweis
-            </button>
+            </Link>
           </div>
 
           {/* Bedarfsausweis Column */}
