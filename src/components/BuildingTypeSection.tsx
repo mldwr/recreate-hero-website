@@ -1,4 +1,3 @@
-
 import { Building, Home, Building2, Check, X } from "lucide-react";
 import { useState } from "react";
 
@@ -6,6 +5,7 @@ const BuildingTypeSection = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [hasBills, setHasBills] = useState<boolean | null>(null);
+  const [unitCount, setUnitCount] = useState<"1-4" | ">4" | null>(null);
 
   const buildingTypes = [
     {
@@ -28,6 +28,8 @@ const BuildingTypeSection = () => {
   const handleNext = () => {
     if (currentStep === 1 && selectedType) {
       setCurrentStep(2);
+    } else if (currentStep === 2 && hasBills !== null) {
+      setCurrentStep(3);
     }
   };
 
@@ -35,6 +37,9 @@ const BuildingTypeSection = () => {
     if (currentStep === 2) {
       setCurrentStep(1);
       setHasBills(null);
+    } else if (currentStep === 3) {
+      setCurrentStep(2);
+      setUnitCount(null);
     }
   };
 
@@ -155,6 +160,102 @@ const BuildingTypeSection = () => {
           </>
         )}
 
+        {currentStep === 3 && (
+          <>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Wie viele Wohneinheiten befinden sich in dem Gebäude?
+              </h3>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+              <button
+                onClick={() => setUnitCount("1-4")}
+                className={`relative p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 ${
+                  unitCount === "1-4"
+                    ? "ring-2 ring-primary shadow-md transform scale-105"
+                    : "hover:scale-105"
+                }`}
+              >
+                <div className="flex flex-col items-center space-y-6">
+                  <div className="p-4 rounded-full bg-gray-50">
+                    <svg
+                      className={`w-12 h-12 ${unitCount === "1-4" ? "text-primary" : "text-gray-600"}`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <text
+                        x="12"
+                        y="16"
+                        textAnchor="middle"
+                        fill="currentColor"
+                        stroke="none"
+                        fontSize="10"
+                        fontWeight="bold"
+                      >
+                        1-4
+                      </text>
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-900">1 - 4</h4>
+                </div>
+                {unitCount === "1-4" && (
+                  <div className="absolute -top-2 -right-2">
+                    <div className="bg-primary text-white rounded-full p-2">
+                      <Check className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </button>
+
+              <button
+                onClick={() => setUnitCount(">4")}
+                className={`relative p-8 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 ${
+                  unitCount === ">4"
+                    ? "ring-2 ring-primary shadow-md transform scale-105"
+                    : "hover:scale-105"
+                }`}
+              >
+                <div className="flex flex-col items-center space-y-6">
+                  <div className="p-4 rounded-full bg-gray-50">
+                    <svg
+                      className={`w-12 h-12 ${unitCount === ">4" ? "text-primary" : "text-gray-600"}`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <text
+                        x="12"
+                        y="16"
+                        textAnchor="middle"
+                        fill="currentColor"
+                        stroke="none"
+                        fontSize="10"
+                        fontWeight="bold"
+                      >
+                        >4
+                      </text>
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-900">&gt; 4</h4>
+                </div>
+                {unitCount === ">4" && (
+                  <div className="absolute -top-2 -right-2">
+                    <div className="bg-primary text-white rounded-full p-2">
+                      <Check className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </button>
+            </div>
+          </>
+        )}
+
         <div className="flex justify-between mt-12 max-w-5xl mx-auto px-4">
           <button
             onClick={handleBack}
@@ -184,11 +285,17 @@ const BuildingTypeSection = () => {
           <button
             onClick={handleNext}
             className={`flex items-center ${
-              (currentStep === 1 && selectedType) || (currentStep === 2 && hasBills !== null)
+              (currentStep === 1 && selectedType) || 
+              (currentStep === 2 && hasBills !== null) ||
+              (currentStep === 3 && unitCount !== null)
                 ? "text-primary hover:text-primary-dark"
                 : "text-gray-400 cursor-not-allowed"
             }`}
-            disabled={(currentStep === 1 && !selectedType) || (currentStep === 2 && hasBills === null)}
+            disabled={
+              (currentStep === 1 && !selectedType) || 
+              (currentStep === 2 && hasBills === null) ||
+              (currentStep === 3 && unitCount === null)
+            }
           >
             Weiter
             <svg
@@ -213,7 +320,7 @@ const BuildingTypeSection = () => {
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div 
               className="h-full bg-primary transition-all duration-300"
-              style={{ width: `${(currentStep / 2) * 100}%` }}
+              style={{ width: `${(currentStep / 3) * 100}%` }}
             />
           </div>
         </div>
