@@ -13,10 +13,10 @@ interface VerbrauchsausweisProgressProps {
 const VerbrauchsausweisProgress = ({ steps, currentStep }: VerbrauchsausweisProgressProps) => {
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center relative">
+      <div className="flex justify-between items-start relative">
         {steps.map((step, index) => (
           <div key={step.number} className="flex-1 flex flex-col items-center relative">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center h-24">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   step.number === 1
@@ -26,7 +26,7 @@ const VerbrauchsausweisProgress = ({ steps, currentStep }: VerbrauchsausweisProg
               >
                 {step.number}
               </div>
-              <p className="mt-2 text-sm text-center whitespace-pre-line">
+              <p className="mt-2 text-sm text-center min-h-[2.5rem]">
                 {step.title}
               </p>
             </div>
