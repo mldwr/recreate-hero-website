@@ -25,9 +25,6 @@ const Hero = () => {
                 remote als Video-Call oder im Self-Service direkt hier online.
               </p>
 
-              <p className="text-lg text-gray-700 font-medium">
-                Nutzen Sie unser Rundum-sorglos-Paket!
-              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -63,8 +60,8 @@ const Hero = () => {
                 </svg>
               </div>
               <div>
-                <p className="font-medium text-gray-900">Videobesichtigung</p>
-                <p className="text-sm text-gray-500">Einfach live</p>
+                <p className="font-medium text-gray-900">Video-Call</p>
+                <p className="text-sm text-gray-500">Direkt und unkompliziert</p>
               </div>
             </div>
 
@@ -92,7 +89,7 @@ const Hero = () => {
               </div>
               <div>
                 <p className="font-medium text-gray-900">Energieausweis</p>
-                <p className="text-sm text-gray-500">Deutschlandweit</p>
+                <p className="text-sm text-gray-500">Online</p>
               </div>
             </div>
           </div>
