@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Input } from "../ui/input";
-import { InfoIcon } from "lucide-react";
+import { InfoIcon, AlertCircle } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import YesNoStep from "../building-type/YesNoStep";
+import { toast } from "sonner";
 
 interface VerbrauchsausweisFormProps {
   currentStep: number;
   onStepChange: (step: number) => void;
+}
+
+interface FormErrors {
+  [key: string]: boolean;
 }
 
 const VerbrauchsausweisForm = ({
@@ -31,15 +36,64 @@ const VerbrauchsausweisForm = ({
     kühlung: null as boolean | null
   });
 
+  const [errors, setErrors] = useState<FormErrors>({});
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+    // Clear error when field is modified
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: false
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: FormErrors = {};
+    let hasErrors = false;
+
+    // Required fields validation
+    const requiredFields = {
+      ausstellungsgrund: "Ausstellungsgrund",
+      adresse: "Adresse",
+      baujahr: "Baujahr",
+      wohneinheiten: "Wohneinheiten",
+      wohnflaeche: "Wohnfläche",
+      gewerbeanteil: "Gewerbeanteil",
+      keller: "Keller",
+      fensterlüftung: "Fensterlüftung",
+      schachtlüftung: "Schachtlüftung",
+      lüftungOhneWärme: "Lüftungsanlage ohne Wärmerückgewinnung",
+      lüftungMitWärme: "Lüftungsanlage mit Wärmerückgewinnung",
+      kühlung: "Kühlung"
+    };
+
+    Object.entries(requiredFields).forEach(([field, label]) => {
+      if (!formData[field as keyof typeof formData]) {
+        newErrors[field] = true;
+        hasErrors = true;
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (hasErrors) {
+      toast.error("Bitte füllen Sie alle erforderlichen Felder aus.", {
+        description: "Die markierten Felder müssen ausgefüllt werden."
+      });
+    }
+
+    return !hasErrors;
   };
 
   const handleNext = () => {
-    onStepChange(currentStep + 1);
+    if (validateForm()) {
+      onStepChange(currentStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -60,6 +114,17 @@ const VerbrauchsausweisForm = ({
       ...prev,
       [field]: value
     }));
+    // Clear error when field is modified
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: false
+      }));
+    }
+  };
+
+  const getFieldErrorClass = (field: string) => {
+    return errors[field] ? "border-red-500 focus-visible:ring-red-500" : "";
   };
 
   return (
@@ -83,8 +148,11 @@ const VerbrauchsausweisForm = ({
                 </label>
                 <InfoIcon className="w-4 h-4 text-gray-400" />
               </div>
-              <Select value={formData.ausstellungsgrund} onValueChange={value => handleInputChange("ausstellungsgrund", value)}>
-                <SelectTrigger>
+              <Select 
+                value={formData.ausstellungsgrund} 
+                onValueChange={value => handleInputChange("ausstellungsgrund", value)}
+              >
+                <SelectTrigger className={getFieldErrorClass("ausstellungsgrund")}>
                   <SelectValue placeholder="Bitte wählen" />
                 </SelectTrigger>
                 <SelectContent>
@@ -93,6 +161,12 @@ const VerbrauchsausweisForm = ({
                   <SelectItem value="modernisierung">Modernisierung</SelectItem>
                 </SelectContent>
               </Select>
+              {errors.ausstellungsgrund && (
+                <div className="flex items-center gap-2 text-red-500 text-sm">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>Bitte wählen Sie einen Ausstellungsgrund</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -108,7 +182,18 @@ const VerbrauchsausweisForm = ({
                   </label>
                   <InfoIcon className="w-4 h-4 text-gray-400" />
                 </div>
-                <Input placeholder="Adresse" value={formData.adresse} onChange={e => handleInputChange("adresse", e.target.value)} />
+                <Input 
+                  placeholder="Adresse" 
+                  value={formData.adresse} 
+                  onChange={e => handleInputChange("adresse", e.target.value)}
+                  className={getFieldErrorClass("adresse")}
+                />
+                {errors.adresse && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte geben Sie die Adresse ein</span>
+                  </div>
+                )}
               </div>
               <div>
                 <div className="flex items-start gap-2 mb-2">
@@ -117,7 +202,18 @@ const VerbrauchsausweisForm = ({
                   </label>
                   <InfoIcon className="w-4 h-4 text-gray-400" />
                 </div>
-                <Input placeholder="Baujahr Gebäude" value={formData.baujahr} onChange={e => handleInputChange("baujahr", e.target.value)} />
+                <Input 
+                  placeholder="Baujahr Gebäude" 
+                  value={formData.baujahr} 
+                  onChange={e => handleInputChange("baujahr", e.target.value)}
+                  className={getFieldErrorClass("baujahr")}
+                />
+                {errors.baujahr && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte geben Sie das Baujahr an</span>
+                  </div>
+                )}
               </div>
 
               {/* New fields */}
@@ -132,7 +228,14 @@ const VerbrauchsausweisForm = ({
                   placeholder="Wohneinheiten" 
                   value={formData.wohneinheiten} 
                   onChange={e => handleInputChange("wohneinheiten", e.target.value)} 
+                  className={getFieldErrorClass("wohneinheiten")}
                 />
+                {errors.wohneinheiten && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte geben Sie die Anzahl der Wohneinheiten an</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -145,8 +248,15 @@ const VerbrauchsausweisForm = ({
                 <Input 
                   placeholder="Wohnfläche in m²" 
                   value={formData.wohnflaeche} 
-                  onChange={e => handleInputChange("wohnflaeche", e.target.value)} 
+                  onChange={e => handleInputChange("wohnflaeche", e.target.value)}
+                  className={getFieldErrorClass("wohnflaeche")}
                 />
+                {errors.wohnflaeche && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte geben Sie die Wohnfläche an</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -159,7 +269,7 @@ const VerbrauchsausweisForm = ({
                 <RadioGroup 
                   value={formData.gewerbeanteil}
                   onValueChange={value => handleInputChange("gewerbeanteil", value)}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                  className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ${errors.gewerbeanteil ? 'text-red-500' : ''}`}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="nein" id="nein" />
@@ -182,6 +292,12 @@ const VerbrauchsausweisForm = ({
                     <Label htmlFor="ja-ueber-90">Ja, über 90% Gewerbeanteil</Label>
                   </div>
                 </RadioGroup>
+                {errors.gewerbeanteil && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie einen Gewerbeanteil aus</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -226,7 +342,7 @@ const VerbrauchsausweisForm = ({
                 <RadioGroup 
                   value={formData.keller}
                   onValueChange={value => handleInputChange("keller", value)}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                  className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${errors.keller ? 'text-red-500' : ''}`}
                 >
                   <div className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-50 cursor-pointer">
                     <img src="/lovable-uploads/d4e29dc7-2bd3-47da-9c38-05e94c6e4b61.png" alt="Beheizt" className="w-16 h-16 mb-2" />
@@ -250,6 +366,12 @@ const VerbrauchsausweisForm = ({
                     </div>
                   </div>
                 </RadioGroup>
+                {errors.keller && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie eine Kelleroption</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -268,7 +390,14 @@ const VerbrauchsausweisForm = ({
                 <YesNoStep 
                   value={formData.fensterlüftung}
                   onChange={(value) => handleBooleanChange("fensterlüftung", value)}
+                  error={errors.fensterlüftung}
                 />
+                {errors.fensterlüftung && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie eine Option</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -278,7 +407,14 @@ const VerbrauchsausweisForm = ({
                 <YesNoStep 
                   value={formData.schachtlüftung}
                   onChange={(value) => handleBooleanChange("schachtlüftung", value)}
+                  error={errors.schachtlüftung}
                 />
+                {errors.schachtlüftung && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie eine Option</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -288,7 +424,14 @@ const VerbrauchsausweisForm = ({
                 <YesNoStep 
                   value={formData.lüftungOhneWärme}
                   onChange={(value) => handleBooleanChange("lüftungOhneWärme", value)}
+                  error={errors.lüftungOhneWärme}
                 />
+                {errors.lüftungOhneWärme && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie eine Option</span>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -298,7 +441,14 @@ const VerbrauchsausweisForm = ({
                 <YesNoStep 
                   value={formData.lüftungMitWärme}
                   onChange={(value) => handleBooleanChange("lüftungMitWärme", value)}
+                  error={errors.lüftungMitWärme}
                 />
+                {errors.lüftungMitWärme && (
+                  <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Bitte wählen Sie eine Option</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -312,7 +462,14 @@ const VerbrauchsausweisForm = ({
             <YesNoStep 
               value={formData.kühlung}
               onChange={(value) => handleBooleanChange("kühlung", value)}
+              error={errors.kühlung}
             />
+            {errors.kühlung && (
+              <div className="flex items-center gap-2 text-red-500 text-sm mt-2">
+                <AlertCircle className="w-4 h-4" />
+                <span>Bitte wählen Sie eine Option</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
