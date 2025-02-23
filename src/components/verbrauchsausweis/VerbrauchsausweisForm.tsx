@@ -6,6 +6,12 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import YesNoStep from "../building-type/YesNoStep";
 import { toast } from "sonner";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 interface VerbrauchsausweisFormProps {
   currentStep: number;
@@ -146,7 +152,16 @@ const VerbrauchsausweisForm = ({
                 <label className="text-sm text-gray-700">
                   Anlass für die Erstellung des Energieausweises
                 </label>
-                <InfoIcon className="w-4 h-4 text-gray-400" />
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <InfoIcon className="w-4 h-4 text-gray-400" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">Wählen Sie den Grund aus, weshalb Sie einen Energieausweis benötigen. Dies ist wichtig für die korrekte Ausstellung des Dokuments.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
               <Select 
                 value={formData.ausstellungsgrund} 
@@ -180,7 +195,16 @@ const VerbrauchsausweisForm = ({
                   <label className="text-sm text-gray-700">
                     Adresse des Gebäudes
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Geben Sie die vollständige Adresse des Gebäudes ein, für das der Energieausweis erstellt werden soll.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <Input 
                   placeholder="Adresse" 
@@ -200,7 +224,16 @@ const VerbrauchsausweisForm = ({
                   <label className="text-sm text-gray-700">
                     Baujahr des Gebäudes
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Das Baujahr ist wichtig für die energetische Bewertung, da Baustandards sich im Laufe der Zeit geändert haben.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <Input 
                   placeholder="Baujahr Gebäude" 
@@ -216,13 +249,21 @@ const VerbrauchsausweisForm = ({
                 )}
               </div>
 
-              {/* New fields */}
               <div>
                 <div className="flex items-start gap-2 mb-2">
                   <label className="text-sm text-gray-700">
                     Anzahl der im Gebäude vorhandenen Wohneinheiten
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Geben Sie die Gesamtzahl der Wohneinheiten im Gebäude an. Eine Wohneinheit ist eine abgeschlossene Wohnung mit eigener Küche und Bad.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <Input 
                   placeholder="Wohneinheiten" 
@@ -243,7 +284,16 @@ const VerbrauchsausweisForm = ({
                   <label className="text-sm text-gray-700">
                     Wohnfläche von allen im Gebäude vorhandenen Wohneinheiten
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Die Gesamtwohnfläche aller Wohneinheiten in Quadratmetern. Dies ist die Summe aller Wohnflächen nach Wohnflächenverordnung (WoFlV).</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <Input 
                   placeholder="Wohnfläche in m²" 
@@ -264,7 +314,16 @@ const VerbrauchsausweisForm = ({
                   <label className="text-sm text-gray-700">
                     Befindet sich Gewerbe in dem Gebäude?
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Der Gewerbeanteil beeinflusst die Art der Energieausweis-Erstellung. Bei einem Anteil über 10% müssen zusätzliche Faktoren berücksichtigt werden.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <RadioGroup 
                   value={formData.gewerbeanteil}
@@ -337,7 +396,16 @@ const VerbrauchsausweisForm = ({
                   <label className="text-sm text-gray-700">
                     Keller
                   </label>
-                  <InfoIcon className="w-4 h-4 text-gray-400" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="w-4 h-4 text-gray-400" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">Die Art des Kellers beeinflusst die energetische Bewertung. Ein beheizter Keller wird zur Energiebilanz hinzugerechnet.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
                 <RadioGroup 
                   value={formData.keller}
@@ -376,11 +444,19 @@ const VerbrauchsausweisForm = ({
             </div>
           </div>
 
-          {/* Building Ventilation Section */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
               Gebäudelüftung
-              <InfoIcon className="w-4 h-4 text-gray-400" />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <InfoIcon className="w-4 h-4 text-gray-400" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs">Die Art der Lüftung hat einen signifikanten Einfluss auf die Energieeffizienz des Gebäudes. Eine kontrollierte Lüftung mit Wärmerückgewinnung kann den Energieverbrauch deutlich reduzieren.</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </h2>
             <div className="space-y-8">
               <div>
@@ -453,11 +529,19 @@ const VerbrauchsausweisForm = ({
             </div>
           </div>
 
-          {/* Cooling Section */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
               Kühlung
-              <InfoIcon className="w-4 h-4 text-gray-400" />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <InfoIcon className="w-4 h-4 text-gray-400" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs">Geben Sie an, ob das Gebäude über eine aktive Kühlung verfügt. Dies beeinflusst den Energiebedarf und die Gesamtenergiebilanz.</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </h2>
             <YesNoStep 
               value={formData.kühlung}
