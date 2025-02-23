@@ -11,18 +11,12 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-semibold">ENERGIE AUSWEIS</span>
+              <span className="text-xl font-semibold">ENERGIE AUSWEIS ONLINE</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <div className="relative group">
-              <button className="flex items-center space-x-1 text-gray-800 hover:text-primary transition-colors">
-                <span>Lösung für</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            </div>
             <div className="relative group">
               <button className="flex items-center space-x-1 text-gray-800 hover:text-primary transition-colors">
                 <span>Produkte</span>

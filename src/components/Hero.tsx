@@ -13,18 +13,16 @@ const Hero = () => {
                   In <span className="text-primary font-bold text-2xl">48</span> Stunden
                 </p> */}
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
-                  Energieausweis online bestellen:
-                  <br />
-                  <span className="text-gray-800">Deutschlandweit!</span>
+                  Energieausweis Online!
                 </h1>
               </div>
 
               <p className="text-lg text-gray-600 leading-relaxed">
-                Wir sind Ihr zuverlässiger Partner für rechtssichere{" "}
-                <span className="text-primary hover:underline cursor-pointer">Bedarfsausweise</span> und{" "}
-                <span className="text-primary hover:underline cursor-pointer">Verbrauchsausweise</span>.
-                Ihren Energieausweis erstellen wir für Sie komfortabel bei einer Vor-Ort-Begehung,
-                einer Videobesichtigung oder im Self-Service.
+                Sie benötigen einen rechtssicheren Energieausweis als{" "}
+                <span className="text-primary hover:underline cursor-pointer">Bedarfsausweis</span> oder{" "}
+                <span className="text-primary hover:underline cursor-pointer">Verbrauchsausweis</span>?
+                Wir erstellen Ihren Energieausweis direkt bei Ihnen vor Ort, 
+                remote als Video-Call oder im Self-Service direkt hier online.
               </p>
 
               <p className="text-lg text-gray-700 font-medium">
