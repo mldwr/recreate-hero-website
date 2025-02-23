@@ -4,9 +4,10 @@ import { Check, X } from "lucide-react";
 type YesNoStepProps = {
   value: boolean | null;
   onChange: (value: boolean) => void;
+  error?: boolean;
 };
 
-const YesNoStep = ({ value, onChange }: YesNoStepProps) => {
+const YesNoStep = ({ value, onChange, error }: YesNoStepProps) => {
   return (
     <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
       <button
@@ -15,7 +16,7 @@ const YesNoStep = ({ value, onChange }: YesNoStepProps) => {
           value === true
             ? "ring-2 ring-primary shadow-md transform scale-105"
             : "hover:scale-105"
-        }`}
+        } ${error ? "ring-2 ring-red-500" : ""}`}
       >
         <div className="flex flex-col items-center space-y-6">
           <div className="p-4 rounded-full bg-gray-50">
@@ -42,7 +43,7 @@ const YesNoStep = ({ value, onChange }: YesNoStepProps) => {
           value === false
             ? "ring-2 ring-primary shadow-md transform scale-105"
             : "hover:scale-105"
-        }`}
+        } ${error ? "ring-2 ring-red-500" : ""}`}
       >
         <div className="flex flex-col items-center space-y-6">
           <div className="p-4 rounded-full bg-gray-50">
@@ -67,3 +68,4 @@ const YesNoStep = ({ value, onChange }: YesNoStepProps) => {
 };
 
 export default YesNoStep;
+
