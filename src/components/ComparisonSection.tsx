@@ -1,4 +1,6 @@
 
+import { BrickWall } from "lucide-react";
+
 const ComparisonSection = () => {
   return (
     <section className="py-16 bg-gray-50">
@@ -13,7 +15,7 @@ const ComparisonSection = () => {
             <div className="flex flex-col items-center">
               <div className="w-24 h-24 mb-4">
                 <img
-                  src="/public/verbrauchausweis.png"
+                  src="/verbrauchausweis.png"
                   alt="Energy certificate service"
                   className="w-full h-full object-cover"
                 />
@@ -24,12 +26,7 @@ const ComparisonSection = () => {
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-full h-full text-primary">
-                    <path
-                      fill="currentColor"
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V9h2v2h2v2h-2v4z"
-                    />
-                  </svg>
+                  <BrickWall className="w-full h-full text-primary" />
                 </div>
                 <p className="text-gray-700">
                   Nur für <span className="font-semibold">Gebäude</span>, die die{" "}
@@ -39,12 +36,7 @@ const ComparisonSection = () => {
 
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-full h-full text-primary">
-                    <path
-                      fill="currentColor"
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V9h2v2h2v2h-2v4z"
-                    />
-                  </svg>
+                  <BrickWall className="w-full h-full text-primary" />
                 </div>
                 <p className="text-gray-700">
                   Orientiert sich am <span className="font-semibold">Verbrauch</span> der vergangenen{" "}
@@ -63,10 +55,10 @@ const ComparisonSection = () => {
             <div className="flex flex-col items-center">
               <div className="w-24 h-24 mb-4">
                 <img
-                    src="/public/bedarfsausweis.png"
-                    alt="Energy certificate service"
-                    className="w-full h-full object-cover"
-                  />
+                  src="/bedarfsausweis.png"
+                  alt="Energy certificate service"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-semibold text-gray-900">Bedarfsausweis</h3>
             </div>
@@ -74,12 +66,7 @@ const ComparisonSection = () => {
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-full h-full text-primary">
-                    <path
-                      fill="currentColor"
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V9h2v2h2v2h-2v4z"
-                    />
-                  </svg>
+                  <BrickWall className="w-full h-full text-primary" />
                 </div>
                 <p className="text-gray-700">
                   Für alle <span className="font-semibold">Wohngebäude</span> jeglicher Baujahre & Zustände
@@ -88,12 +75,7 @@ const ComparisonSection = () => {
 
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-full h-full text-primary">
-                    <path
-                      fill="currentColor"
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V9h2v2h2v2h-2v4z"
-                    />
-                  </svg>
+                  <BrickWall className="w-full h-full text-primary" />
                 </div>
                 <p className="text-gray-700">
                   Orientiert sich an der <span className="font-semibold">Energieeffizienz</span> vom Gebäude
